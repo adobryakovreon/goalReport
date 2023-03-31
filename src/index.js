@@ -1,17 +1,65 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux'
+import store from './store/store'
 
+// const Wid = {
+
+//     render() {
+//         console.log('render');
+//         return true;
+//     },
+
+//     init() {
+//         console.log('init');
+//         return true;
+//     },
+
+//     bind_actions() {
+//         console.log('bind_actions');
+//         return true;
+//     },
+
+//     settings() {
+//     },
+
+//     advancedSettings() {
+//         console.log("react advansedSettings")
+//         const root = ReactDOM.createRoot(document.getElementById('list_page_holder'));
+//         root.render(
+//             <Provider store={store}>
+//                 <App />
+//             </Provider>
+//         );
+//     },
+
+//     onSave() {
+
+//     },
+
+//     destroy() {
+//         console.log('destroy');
+//     },
+
+//     contacts_selected() {
+
+//     },
+
+//     leads_selected() {
+
+//     },
+
+//     tasks_selected() {
+
+//     }
+
+// };
+
+// export default Wid;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

@@ -1,0 +1,14 @@
+.report_container {
+	user-select: none;
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+	gap: 70px;
+	align-self:flex-start;
+	border-right: 1px dotted black ;
+}
+
+.report__name {
+	text-align: left;
+	border-right: 10px solid grey
+}
