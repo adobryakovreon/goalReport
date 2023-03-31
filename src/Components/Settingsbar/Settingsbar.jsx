@@ -2,20 +2,30 @@ import React, { useEffect, useState } from "react";
 import classes from "./Settingsbar.module.css"
 import "./../../App.css"
 
-const Settingsbar = ({groups, filters}) => {
+const Settingsbar = ({groups}) => {
 
-	const [filter, setFilter] = useState(groups)
-
+	const [groupList, setGroupList] = useState(groups)
+	const [filterGroups, setFilterGroups] = useState(groups.map(group => group.id))
 	useEffect(() => {
-		setFilter(groups)
+		setGroupList(groups)
+		setFilterGroups(groups.map(group => group.id))
+		// console.log(filterGroups)
 	}, [groups])
+
+	const switchGroupIndex = (e) => {
+		if (e.target.checked) {
+			setFilterGroups(filterGroups.filter(groupId => groupId !== e.target.value))
+		} else {
+			setFilterGroups(...filterGroups, e.target.value)
+		}
+		console.log(filterGroups)
+	} 
 
 	return (
 		<div className={classes.settingsbar_container}>
 			<div className={classes.settingsbar__settingspanel}>
 				<button className={classes.button_input}>Filtres</button>
 				<button className={classes.button_input}>Goal settings</button>
-
 			</div>
 			<div className={classes.settingsbar__description__wrapper}>
 				<div className={classes.settingsbar__description}>
@@ -23,13 +33,13 @@ const Settingsbar = ({groups, filters}) => {
 				</div>
 			</div>
 			<div className={classes.settingsbar__quick_select}>
-				{filter.map(group => 
+				{groupList.map(group => 
 					<div 
-					className={classes.settingsbar__quick_select__selectitem}
+						key={group.id}
+						className={classes.settingsbar__quick_select__selectitem}
 					>
-						<input checked value={group.id} type="checkbox" />
+						<input checked={filterGroups.includes(Number(group.id))} onChange={(e) => switchGroupIndex(e)} value={group.id} type="checkbox" />
 						<div 
-							key={group.id} 
 							value={group.id}
 							>
 							{group.name}

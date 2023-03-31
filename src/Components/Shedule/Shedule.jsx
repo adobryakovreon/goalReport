@@ -10,7 +10,7 @@ const Shedule = ({group}) => {
 		<div className={classes.shedule_container}>
 			<StatLine {...group}/>
 			<div className={classes.shedule_container__worker_container}>
-				{group.workers.map(worker => <StatLine {...worker}/>)}
+				{group.workers.map(worker => <StatLine key={worker.id} {...worker}/>)}
 			</div>
 		</div>
 	)

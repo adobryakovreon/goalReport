@@ -11,7 +11,7 @@ const ReportDisplay = () => {
 	const [selectedReport, setSelectedReport] = useState(report);
 
 	const [seletedGroups, setSelectedGroups] = useState(report.groups) 
-	const [filterList, setFilterList] = useState([])
+	const [filterList, setFilterList] = useState(seletedGroups.map(group => group.id))
 
 
 	useEffect(() => {
@@ -19,7 +19,7 @@ const ReportDisplay = () => {
 	}, [report]);
 
 	const setFilter = (filterList) => {
-
+	
 	}
 
 	return (
